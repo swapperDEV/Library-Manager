@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { UserContext } from "../store/user-context";
+import { UserContext } from "../../store/user-context";
 
 //comunicating with backend
 type UserData = {

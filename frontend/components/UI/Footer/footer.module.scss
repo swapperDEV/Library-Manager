@@ -1,0 +1,20 @@
+@import "../../../styles/colors.module.scss";
+.footer {
+  width: 100%;
+  min-height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-grow: 1;
+  div {
+    background-color: var(--theme-page-background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: lightgray;
+    font-weight: 500;
+    width: 100%;
+    min-height: 80px;
+  }
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import { useUser } from "../hooks/useUser";
+import { useUser } from "../utils/hooks/useUser";
 import { UserContext } from "../store/user-context";
 
 //provider dla userów

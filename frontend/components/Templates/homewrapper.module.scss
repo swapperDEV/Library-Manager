@@ -1,0 +1,13 @@
+@import "../../styles/colors.module.scss";
+@import "../../styles/fonts.module.scss";
+
+.wrapper {
+  font-family: "Roboto", sans-serif;
+  min-width: 100%;
+  min-height: 100%;
+  font-weight: 500;
+  color: var(--theme-page-text);
+  background-color: var(--theme-color);
+  display: flex;
+  flex-direction: column;
+}
