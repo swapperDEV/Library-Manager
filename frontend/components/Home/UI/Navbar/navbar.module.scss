@@ -1,0 +1,47 @@
+@import "../../../../styles/colors.module.scss";
+@import "../../../../styles/fonts.module.scss";
+
+.nav {
+  min-height: 80px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 80px;
+  font-size: 2rem;
+  border-bottom: 2px solid $lightdark;
+  .navBut {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 7%;
+    align-items: center;
+  }
+  ul {
+    padding-left: 80px;
+    list-style-type: none;
+    display: flex;
+    font-size: 1.2rem;
+    color: lightgray;
+    font-weight: 400;
+    justify-content: center;
+    li {
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+  }
+  header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    padding-right: 25px;
+    border-right: 1px solid $lightdark;
+    a {
+      color: $blue;
+      margin-right: 2px;
+    }
+    svg {
+      margin-left: 10px;
+    }
+  }
+}

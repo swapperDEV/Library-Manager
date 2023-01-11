@@ -1,0 +1,54 @@
+@import "../../styles/colors.module.scss";
+@import "../../styles/fonts.module.scss";
+
+.wrapper {
+  font-family: "Roboto", sans-serif;
+  min-width: 100%;
+  min-height: 100%;
+  font-weight: 500;
+  color: white;
+  background-color: $dark;
+  display: flex;
+  flex-direction: column;
+  section {
+    padding-top: 60px;
+    display: flex;
+    flex-grow: 1;
+    padding-left: 80px;
+    header {
+      flex-grow: 1;
+      padding-top: 100px;
+      font-weight: 600;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+    }
+    aside {
+      padding-right: 10%;
+      :first-child {
+        margin-top: 60px;
+        border-radius: 100px;
+        overflow: hidden;
+      }
+    }
+  }
+  footer {
+    width: 100%;
+    min-height: 80px;
+    display: flex;
+    justify-content: center;
+    div {
+      background-color: $lightdark;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2rem;
+      color: lightgray;
+      font-weight: 500;
+      width: 90%;
+      min-height: 80px;
+      border-top-left-radius: 25px;
+      border-top-right-radius: 25px;
+    }
+  }
+}
