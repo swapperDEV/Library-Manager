@@ -1,4 +1,3 @@
-@import "../../../styles/colors.module.scss";
 @import "../../../styles/fonts.module.scss";
 
 .text {
@@ -11,6 +10,17 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    .firstBg {
+      position: absolute;
+      transition: 0.3s ease;
+      width: 155px;
+      height: 60px;
+      transform: translateX(-20px);
+      z-index: -1;
+      background-color: var(--content-color);
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+    }
     img {
       position: relative;
       left: 20%;
@@ -26,7 +36,7 @@
     b {
       padding-left: 60px;
       a {
-        color: $blue;
+        color: var(--content-color);
       }
     }
   }
@@ -52,7 +62,8 @@
   width: 40px;
   height: 40px;
   border-radius: 40px;
-  background-color: $blue;
+  transition: 0.3s ease;
+  background-color: var(--content-color);
   margin-left: 10px;
 }
 
@@ -116,11 +127,11 @@
     align-items: center;
     b {
       border-radius: 30px;
-      background-color: $blue;
+      transition: 0.3s ease;
+      background-color: var(--content-color);
       padding-top: 5px;
       padding-left: 15px;
       padding-bottom: 5px;
-      transition: 0.1s ease;
     }
     b:hover {
       cursor: pointer;

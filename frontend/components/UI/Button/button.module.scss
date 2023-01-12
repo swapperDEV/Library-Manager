@@ -1,15 +1,13 @@
-@import "../../../styles/colors.module.scss";
 .button {
-  background-color: $blue;
+  background-color: var(--content-color);
   color: white;
   border-radius: 30px;
   padding: 10px;
   padding-left: 25px;
   padding-right: 25px;
-  border: 1px solid $blue;
-  transition: 0.1s ease;
+  border: 1px solid var(--content-color);
+  transition: 0.3s ease;
   font-size: 1.5rem;
-  transition: 0.1s ease;
 }
 .button:hover {
   cursor: pointer;

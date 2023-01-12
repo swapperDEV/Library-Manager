@@ -1,2 +1,23 @@
-@import "../../styles/colors.module.scss";
 @import "../../styles/fonts.module.scss";
+
+.wrapper {
+  display: flex;
+  width: 65%;
+  padding-top: 5vh;
+  font-family: "Montserrat", sans-serif;
+  margin: 10px auto 10px auto;
+  flex-direction: column;
+  header {
+    font-weight: 600;
+    font-size: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    .line {
+      width: 130px;
+      margin-top: 5px;
+      height: 5px;
+      border-radius: 10px;
+      background-color: var(--content-color);
+    }
+  }
+}

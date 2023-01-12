@@ -7,6 +7,7 @@ export const Welcome = () => {
       {" "}
       <div className={styles.text}>
         <div className={styles.first}>
+          <div className={styles.firstBg}></div>
           Start with<div className={styles.circleGreen}></div>
           <div className={styles.circleRed}></div>
           <div className={styles.circleYellow}></div>
