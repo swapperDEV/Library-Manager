@@ -19,3 +19,5 @@ export default function Index() {
 //https://dribbble.com/shots/18052378-Book-Collection-Header-Page-UI
 // https://dribbble.com/shots/16139970-Piqoboo-Book-Landing-Page
 //https://dribbble.com/shots/19582832-Library-Management-Dashboard
+
+//login , local library relink to local libraries map

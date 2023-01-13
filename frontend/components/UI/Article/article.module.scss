@@ -19,6 +19,17 @@
       display: flex;
       font-weight: 500;
       margin-bottom: 20px;
+      span {
+        margin-left: 15px;
+        background-color: var(--content-color);
+        border-radius: 15px;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
     }
     .description {
       font-weight: 300;

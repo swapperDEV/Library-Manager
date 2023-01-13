@@ -7,7 +7,7 @@ import useDarkMode from "../../../utils/hooks/useTheme";
 
 export const Navbar = () => {
   const router = useRouter();
-  const { isDarkMode, toggle } = useDarkMode();
+  const { toggle } = useDarkMode();
   const navbar = [
     {
       text: "Home",
@@ -15,19 +15,19 @@ export const Navbar = () => {
     },
     {
       text: "About",
-      link: "about",
+      link: "/about",
     },
     {
       text: "I'm Customer",
-      link: "login/customer",
+      link: "/login/customer",
     },
     {
       text: "I'm Library Admin",
-      link: "login/admin",
+      link: "/login/admin",
     },
     {
       text: "Sign Library",
-      link: "sign",
+      link: "/sign",
     },
   ];
   return (
@@ -43,7 +43,7 @@ export const Navbar = () => {
             </li>
           ))}
         </ul>
-        <div className={!isDarkMode ? styles.navButDark : styles.navBut}>
+        <div className={styles.navBut}>
           <FaLightbulb onClick={toggle} />
         </div>
       </nav>

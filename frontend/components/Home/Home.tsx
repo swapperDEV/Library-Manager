@@ -2,8 +2,6 @@ import React from "react";
 import styles from "./home.module.scss";
 import Image from "next/image";
 import { Welcome } from "./Welcome/Welcome";
-import { Navbar } from "../UI/Navbar/Navbar";
-import { Footer } from "../UI/Footer/Footer";
 import { HomeWrapper } from "../Templates/HomeWrapper";
 
 export const Home = () => {
@@ -15,14 +13,14 @@ export const Home = () => {
             <header>
               <Welcome />
             </header>
-            <aside>
+            <figure>
               <Image
                 src={"/1727.jpg"}
-                width="620"
+                width="720"
                 height="500"
                 alt="book-man"
               />
-            </aside>
+            </figure>
           </section>
         </div>
       </>

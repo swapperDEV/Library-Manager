@@ -1,0 +1,31 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: left;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10vh;
+  div {
+    display: flex;
+    flex-direction: column;
+    .title {
+      font-weight: 500;
+      font-size: 2rem;
+      a {
+        color: var(--content-color);
+      }
+    }
+    .info {
+      font-size: 1rem;
+      font-weight: 300;
+      margin-top: 5px;
+      margin-bottom: 20px;
+      color: var(--theme-page-text-two);
+      text-align: right;
+      a {
+        color: var(--content-color);
+      }
+    }
+  }
+}

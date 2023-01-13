@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Footer } from "../UI/Footer/Footer";
 import { Navbar } from "../UI/Navbar/Navbar";
 import { AnimatePresence } from "framer-motion";
