@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { Button } from "../../UI/Button/Button";
-import { Input } from "../Elements/Input";
+import { Input } from "../../UI/Form/Input";
 import styles from "./login.module.scss";
 
 export const LoginCustomer = () => {

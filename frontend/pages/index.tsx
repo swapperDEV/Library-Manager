@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { Home } from "../components/Home/Home";
 import styles from "../styles/index.module.scss";
+import useDarkMode from "../utils/hooks/useTheme";
 
 export default function Index() {
   return (

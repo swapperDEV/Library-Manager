@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { Button } from "../../UI/Button/Button";
-import { Input } from "../Elements/Input";
+import { Input } from "../../UI/Form/Input";
 import styles from "./login.module.scss";
 
 export const LoginAdmin = () => {
@@ -13,7 +13,7 @@ export const LoginAdmin = () => {
       <div>
         <p className={styles.title}>Login to library admin account.</p>
         <p className={styles.info}>
-          To <a>library</a> managment.
+          Needed to <a>manage</a> the library.
         </p>
         <div className={styles.inputs}>
           <Input name={"Library Id"} ref={libraryid} />
