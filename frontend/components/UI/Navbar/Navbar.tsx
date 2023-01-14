@@ -3,11 +3,17 @@ import { useRouter } from "next/router";
 import { FaBookOpen } from "react-icons/fa";
 import { FaLightbulb } from "react-icons/fa";
 import styles from "./navbar.module.scss";
-import useDarkMode from "../../../utils/hooks/useTheme";
+import { useTheme } from "next-themes";
 
 export const Navbar = () => {
   const router = useRouter();
-  const { toggle } = useDarkMode();
+  const { theme, setTheme } = useTheme();
+
+  const toggle = () => {
+    if (theme === "light") {
+      setTheme("dark");
+    } else [setTheme("light")];
+  };
   const navbar = [
     {
       text: "Home",

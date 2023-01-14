@@ -4,16 +4,10 @@ import { Navbar } from "../UI/Navbar/Navbar";
 import { AnimatePresence } from "framer-motion";
 import styles from "./styles/homewrapper.module.scss";
 import { MotionProvider } from "../Providers/MotionProvider";
-import useDarkMode from "../../utils/hooks/useTheme";
 
 export const HomeWrapper = ({ children }: { children: JSX.Element }) => {
-  const { isDarkMode } = useDarkMode();
   return (
-    <main
-      className={
-        isDarkMode ? `${styles.wrapper} dark` : `${styles.wrapper} light`
-      }
-    >
+    <main className={styles.wrapper}>
       <Navbar />
       <MotionProvider>
         <AnimatePresence exitBeforeEnter>{children}</AnimatePresence>
