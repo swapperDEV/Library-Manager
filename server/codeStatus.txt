@@ -1,0 +1,5 @@
+//409 -- resource exists
+//422 -- failed validation
+//201 -- created
+//200 -- ok
+//500 -- another error
