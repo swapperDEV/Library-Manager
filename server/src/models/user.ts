@@ -1,7 +1,17 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+import mongoose, { Schema, Document } from "mongoose";
+import { IBook } from "./book";
 
-const userSchema = new Schema({
+interface IUser extends Document {
+  email: string;
+  password: string;
+  name: string;
+  cardId?: string;
+  library: string;
+  role: string;
+  rentedBooks: Array<IBook>;
+}
+
+const userSchema: Schema = new Schema({
   email: {
     type: String,
     required: true,
@@ -34,4 +44,4 @@ const userSchema = new Schema({
   ],
 });
 
-module.exports = mongoose.model("User", userSchema);
+export default mongoose.model<IUser>("User", userSchema);

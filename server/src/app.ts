@@ -1,10 +1,10 @@
-const path = require("path");
-const express = require("express");
-const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
+import express from "express";
+import type { ErrorRequestHandler } from "express";
+import bodyParser from "body-parser";
+import mongoose from "mongoose";
 
 //routes
-const createLibraryRoute = require("./routes/createlib");
+import createLibraryRoute from "./routes/createlib";
 // const authRoutes = require("./routes/auth");
 
 const app = express();
@@ -26,13 +26,13 @@ app.use("/createlib", createLibraryRoute);
 // app.use("/auth", authRoutes);
 
 //error handling
-app.use((error, req, res, next) => {
+app.use(((error, req, res, next) => {
   console.log(error);
   const status = error.statusCode || 500;
   const message = error.message;
   const data = error.data;
   res.status(status).json({ message: message, data: data });
-});
+}) as ErrorRequestHandler);
 
 //mongo db
 mongoose

@@ -1,8 +1,8 @@
-const express = require("express");
-const { body } = require("express-validator/check");
+import express, { Router } from "express";
+import { body } from "express-validator/check";
 const { createLibrary } = require("../controllers/createlib");
 
-const router = express.Router();
+const router = Router();
 
 //POST /createlib/new
 router.post(
@@ -19,4 +19,4 @@ router.post(
   createLibrary
 );
 
-module.exports = router;
+export default router;
