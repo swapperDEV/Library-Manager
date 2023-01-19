@@ -1,0 +1,19 @@
+@import "../../../styles/fonts.module.scss";
+.button {
+  background-color: var(--content-color);
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  border-radius: 30px;
+  padding: 10px;
+  font-weight: 500;
+  width: 100%;
+  padding-left: 25px;
+  padding-right: 25px;
+  border: 1px solid var(--content-color);
+  transition: 0.3s ease;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+.button:hover {
+  cursor: pointer;
+}

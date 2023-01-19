@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useReducer, useState } from "react";
 import { UserContext } from "../../store/user-context";
 
 //comunicating with backend
@@ -8,8 +8,47 @@ type UserData = {
   role?: string;
 };
 
+type State = {
+  userData: UserData;
+};
+
+const initialState = {
+  userData: {},
+};
+
+const actions = {
+  LOGIN_USER: "LOGIN_USER",
+  LOGOUT_USER: "OGOUT_USER",
+};
+
+const reducer = (
+  state: State,
+  action: { type: string; userData: UserData }
+) => {
+  switch (action.type) {
+    case actions.LOGIN_USER:
+      return {
+        userData: action.userData,
+      };
+    case actions.LOGOUT_USER: {
+      return {
+        userData: action.userData,
+      };
+    }
+    default:
+      return state;
+  }
+};
+
 export const useUser = () => {
-  const [userData, setUserData] = useState<UserData>({});
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const logUser = (userData: {}) => {
+    dispatch({ type: actions.LOGIN_USER, userData });
+  };
+  const logoutUser = (userData: {}) => {
+    dispatch({ type: actions.LOGOUT_USER, userData });
+  };
+
   const userCtx = useContext(UserContext);
-  return { userData };
+  return { state };
 };
