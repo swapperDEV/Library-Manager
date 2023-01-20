@@ -14,10 +14,10 @@ export const SignLibrary = () => {
   const [libraryName, setLibraryName] = useState<string>("");
   const [libraryAddress, setLibraryAddress] = useState<string>("");
   const [libraryPhone, setLibraryPhone] = useState<string>("");
-  const adminName = useRef();
-  const adminPassword = useRef();
-  const adminEmail = useRef();
-  const coords = useRef();
+  const [adminName, setAdminName] = useState<string>("");
+  const [adminPassword, setAdminPassword] = useState<string>("");
+  const [adminEmail, setAdminEmail] = useState<string>("");
+  const [coords, setCoords] = useState<string>("");
 
   const dotsFunc = () => {
     for (let i = 0; i < step; i++) {
@@ -60,7 +60,7 @@ export const SignLibrary = () => {
         )}
         {step === 2 && (
           <FadeAnimationWrapper>
-            <AdminLibrary changeStep={changeStep} />
+            <AdminLibrary changeStep={changeStep} libraryName={libraryName} />
           </FadeAnimationWrapper>
         )}
         {step === 3 && (

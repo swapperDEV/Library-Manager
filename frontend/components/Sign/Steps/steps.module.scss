@@ -1,6 +1,12 @@
 .step {
   margin-top: 20px;
   width: 400px;
+  .names {
+    font-weight: 400;
+    font-size: 1.2rem;
+    color: lightgray;
+    padding-bottom: 0px;
+  }
 }
 .buttons {
   display: flex;
