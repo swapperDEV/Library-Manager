@@ -14,7 +14,7 @@ export const Input = React.forwardRef<HTMLInputElement, Props>((props, ref) => {
       <div className={styles.cont}>
         {props.icon && <>{props.icon}</>}
         <input
-          maxLength={20}
+          maxLength={35}
           ref={ref}
           type={props.type ? props.type : "text"}
         />

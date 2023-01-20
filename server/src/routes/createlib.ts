@@ -8,13 +8,13 @@ const router = Router();
 router.post(
   "/new",
   [
-    body("name").trim().isLength({ min: 10 }),
-    body("adminEmail")
-      .isEmail()
-      .withMessage("Please enter a valid email.")
-      .normalizeEmail(),
-    body("adminPassword").trim().isLength({ min: 5 }),
-    body("adminName").trim().isLength({ min: 5 }),
+    body("name"),
+    body("phone"),
+    body("address"),
+    body("coords"),
+    body("adminEmail"),
+    body("adminPassword"),
+    body("adminName"),
   ],
   createLibrary
 );

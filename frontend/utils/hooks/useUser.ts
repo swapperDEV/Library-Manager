@@ -18,7 +18,7 @@ const initialState = {
 
 const actions = {
   LOGIN_USER: "LOGIN_USER",
-  LOGOUT_USER: "OGOUT_USER",
+  LOGOUT_USER: "LOGOUT_USER",
 };
 
 const reducer = (

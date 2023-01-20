@@ -7,6 +7,7 @@ import { AdminLibrary } from "./Steps/AdminLibrary";
 import { MapStep } from "./Steps/MapStep";
 import { FadeAnimationWrapper } from "../Templates/FadeAnimationWrapper";
 import { toast } from "react-toastify";
+import { signLibraryCall } from "../../utils/functions/signLibrary";
 
 export const SignLibrary = () => {
   const [step, setStep] = useState(1);
@@ -17,7 +18,7 @@ export const SignLibrary = () => {
   const [adminName, setAdminName] = useState<string>("");
   const [adminPassword, setAdminPassword] = useState<string>("");
   const [adminEmail, setAdminEmail] = useState<string>("");
-  const [coords, setCoords] = useState<string>("");
+  const [coords, setCoords] = useState<[number, number]>([0, 0]);
 
   const dotsFunc = () => {
     for (let i = 0; i < step; i++) {
@@ -32,15 +33,25 @@ export const SignLibrary = () => {
   }
 
   const changeStep = (step: number, saveVariables: string) => {
-    if (saveVariables === "about") {
-    } else if (saveVariables === "clear") {
+    if (saveVariables === "clear") {
       toast("Form was cleared.");
     }
     setStep(step);
     setDots([]);
     dotsFunc();
   };
-  const validLibrary = () => {};
+  const signLibrary = () => {
+    const library = {
+      name: libraryName,
+      address: libraryAddress,
+      phone: libraryPhone,
+      coords: coords,
+      adminName: `${libraryName}_${adminName}`,
+      adminPassword: adminPassword,
+      adminEmail: adminEmail,
+    };
+    signLibraryCall(library);
+  };
   return (
     <HomeWrapper>
       <section className={styles.wrapper}>
@@ -60,14 +71,21 @@ export const SignLibrary = () => {
         )}
         {step === 2 && (
           <FadeAnimationWrapper>
-            <AdminLibrary changeStep={changeStep} libraryName={libraryName} />
+            <AdminLibrary
+              changeStep={changeStep}
+              libraryName={libraryName}
+              setAdminName={(x: string) => setAdminName(x)}
+              setAdminPassword={(x: string) => setAdminPassword(x)}
+              setAdminEmail={(x: string) => setAdminEmail(x)}
+            />
           </FadeAnimationWrapper>
         )}
         {step === 3 && (
           <FadeAnimationWrapper>
             <MapStep
               changeStep={changeStep}
-              signLibrary={() => validLibrary()}
+              signLibrary={() => signLibrary()}
+              setCoords={(x: [number, number]) => setCoords(x)}
             />
           </FadeAnimationWrapper>
         )}

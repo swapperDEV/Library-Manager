@@ -2,9 +2,11 @@
   margin-top: 20px;
   width: 400px;
   .names {
-    font-weight: 400;
-    font-size: 1.2rem;
+    padding: 0px;
+    font-weight: 500;
+    font-size: 1.3rem;
     color: lightgray;
+    font-family: "Monstreat", sans-serif;
     padding-bottom: 0px;
   }
 }
@@ -26,6 +28,7 @@
   margin-top: 20px;
   margin-bottom: 10px;
   height: 300px;
+  border: 5px solid var(--content-color);
   width: 30vw;
 }
 .title {

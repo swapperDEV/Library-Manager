@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { Map, Draggable } from "pigeon-maps";
 
-export const SignMap = () => {
-  const [anchor, setAnchor] = useState<any>([52.237, 21.0175]);
+type types = {
+  anchor: [number, number];
+  setAnchor: any;
+};
+
+export const SignMap = ({ anchor, setAnchor }: types) => {
   return (
     <>
       <Map

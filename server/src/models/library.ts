@@ -11,7 +11,19 @@ const LibrarySchema: Schema = new Schema(
       type: String,
       required: true,
     },
-    admin: {
+    address: {
+      type: String,
+      required: true,
+    },
+    phone: {
+      type: String,
+      required: true,
+    },
+    coords: {
+      type: [Number],
+      required: true,
+    },
+    adminName: {
       type: String,
       required: true,
     },
