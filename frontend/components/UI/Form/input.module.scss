@@ -7,6 +7,18 @@
   p {
     padding-bottom: 2px;
   }
+  .cont {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    color: var(--theme-page-text);
+    font-size: 1.3rem;
+    svg {
+      padding-top: 5px;
+      margin-right: 5px;
+    }
+  }
   input {
     background-color: transparent;
     border: 0px solid var(--theme-page-text);

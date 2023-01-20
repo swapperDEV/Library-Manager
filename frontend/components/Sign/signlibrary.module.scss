@@ -8,33 +8,11 @@
   flex-direction: column;
   align-items: center;
   padding-top: 10vh;
-  .title {
-    text-align: center;
-    font-weight: 400;
-    padding-bottom: 5px;
-  }
-  .desc {
-    text-align: center;
-    padding-top: 40px;
-    font-weight: 400;
-  }
-  .form {
-    margin-top: 20px;
-    width: 400px;
-  }
   .dots {
     display: flex;
     div {
       margin: 10px;
     }
-  }
-  .map {
-    border-radius: 15px;
-    overflow: hidden;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    height: 300px;
-    width: 30vw;
   }
   .description {
     font-weight: 500;
@@ -45,4 +23,8 @@
       font-weight: 300;
     }
   }
+}
+
+.memoryVariables {
+  display: none;
 }

@@ -1,0 +1,29 @@
+.step {
+  margin-top: 20px;
+  width: 400px;
+}
+.buttons {
+  display: flex;
+  button {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+.desc {
+  text-align: center;
+  padding-top: 40px;
+  font-weight: 400;
+}
+.map {
+  border-radius: 15px;
+  overflow: hidden;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  height: 300px;
+  width: 30vw;
+}
+.title {
+  text-align: center;
+  font-weight: 400;
+  padding-bottom: 5px;
+}
