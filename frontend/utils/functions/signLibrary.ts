@@ -2,7 +2,6 @@ import { libraryType } from "../../types/library";
 import { apiIP } from "../data/config";
 
 export const signLibraryCall = async (library: libraryType) => {
-  console.log("signing", JSON.stringify(library));
   try {
     const res = await fetch(`${apiIP}/createlib/new`, {
       method: "POST",
@@ -16,8 +15,7 @@ export const signLibraryCall = async (library: libraryType) => {
     } else {
       const json = await res.json();
       if (json.message === "Library & admin acc created successfully!") {
-        // created
-        //
+        console.log(json);
       }
     }
   } catch (error) {
