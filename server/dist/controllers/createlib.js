@@ -19,11 +19,9 @@ const user_1 = __importDefault(require("../models/user"));
 const check_1 = require("express-validator/check");
 const deleteLibrary_1 = require("../utils/deleteLibrary");
 const createLibrary = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(req.body);
     const errors = (0, check_1.validationResult)(req);
     if (!errors.isEmpty()) {
         let error = new Error("Validation error");
-        console.log(errors);
         error.statusCode = 422;
         throw error;
     }

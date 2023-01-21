@@ -4,21 +4,16 @@ import User from "../models/user";
 import { validationResult } from "express-validator/check";
 import { deleteLibrary } from "../utils/deleteLibrary";
 import { Request, Response, NextFunction } from "express";
-
-interface ResponseError extends Error {
-  statusCode?: number;
-}
+import { ResponseError } from "../types/error";
 
 export const createLibrary = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
-  console.log(req.body);
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     let error: ResponseError = new Error("Validation error");
-    console.log(errors);
     error.statusCode = 422;
     throw error;
   }
