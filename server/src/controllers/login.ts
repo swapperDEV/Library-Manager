@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import User from "../models/user";
 import { CatchError, ResponseError } from "../types/error";
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 export const loginUser = async (
   req: Request,
@@ -25,7 +26,7 @@ export const loginAdmin = async (
     const user = await User.findOne({ name: name });
     if (!user) {
       const error: ResponseError = new Error(
-        "A user with this email could not be found."
+        "A user with this name could not be found."
       );
       error.statusCode = 401;
       throw error;
@@ -36,8 +37,17 @@ export const loginAdmin = async (
       error.statusCode = 401;
       throw error;
     }
-    req.session.user = user;
-    res.status(200).json({ user: user, session: req.session });
+    const token = jwt.sign(
+      {
+        name: user.name,
+        userId: user._id.toString(),
+      },
+      "swapperdev",
+      { expiresIn: "1h" }
+    );
+    res
+      .status(200)
+      .json({ user: user, token: token, userId: user._id.toString() });
   } catch (err: CatchError) {
     if (!err.statusCode) {
       err.statusCode = 500;
@@ -51,17 +61,7 @@ export const checkLogin = async (
   res: Response,
   next: NextFunction
 ) => {
-  res.status(200).json({ user: req.session.user, session: req.session.id });
-};
-
-export const logoutSession = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  req.session.destroy(function (err: ResponseError) {
-    if (!err) {
-      res.status(200).json({ message: "session destroyed" });
-    }
-  });
+  console.log("tw id", req.userId);
+  const user = await User.findById(req.userId);
+  res.status(200).json({ message: "authenticated", user: user });
 };

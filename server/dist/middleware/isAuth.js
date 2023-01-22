@@ -1,17 +1,29 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.authChecker = void 0;
+const jwt = require("jsonwebtoken");
 const authChecker = (req, res, next) => {
-    console.log(`Session Checker: ${req.session.id}`);
-    console.log(req.session, "_____test_____ ", req.session.user);
-    if (req.session.user) {
-        console.log(`Found User Session`);
-        next();
-    }
-    else {
-        let error = new Error("Authentication failed.");
+    const authHeader = req.get("Authorization");
+    if (!authHeader) {
+        const error = new Error("Not authenticated.");
         error.statusCode = 401;
-        next(error);
+        throw error;
     }
+    const token = authHeader.split(" ")[1];
+    let decodedToken;
+    try {
+        decodedToken = jwt.verify(token, "swapperdev");
+    }
+    catch (err) {
+        err.statusCode = 500;
+        throw err;
+    }
+    if (!decodedToken) {
+        const error = new Error("Not authenticated.");
+        error.statusCode = 401;
+        throw error;
+    }
+    req.userId = decodedToken.userId;
+    next();
 };
 exports.authChecker = authChecker;

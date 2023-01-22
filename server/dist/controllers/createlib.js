@@ -18,6 +18,7 @@ const library_1 = __importDefault(require("../models/library"));
 const user_1 = __importDefault(require("../models/user"));
 const check_1 = require("express-validator/check");
 const deleteLibrary_1 = require("../utils/deleteLibrary");
+const jwt = require("jsonwebtoken");
 const createLibrary = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const errors = (0, check_1.validationResult)(req);
     if (!errors.isEmpty()) {
@@ -59,12 +60,16 @@ const createLibrary = (req, res, next) => __awaiter(void 0, void 0, void 0, func
                     role: "admin",
                 });
                 yield user.save();
-                req.session.user = user;
+                const token = jwt.sign({
+                    name: adminName,
+                    userId: user._id.toString(),
+                }, "swapperdev", { expiresIn: "1h" });
                 res.status(201).json({
                     message: "Library & admin acc created successfully!",
                     admin: user,
                     library: library,
-                    session: req.session,
+                    token: token,
+                    id: user._id.toString(),
                 });
             }
             catch (err) {

@@ -11,6 +11,7 @@ import { toast } from "react-toastify";
 import { signLibraryCall } from "../../utils/functions/signLibrary";
 import { useUser } from "../../utils/hooks/useUser";
 import { UserContext } from "../../store/user-context";
+import { createToken } from "../../utils/functions/createToken";
 
 export const SignLibrary = () => {
   const [step, setStep] = useState(1);
@@ -27,10 +28,10 @@ export const SignLibrary = () => {
 
   const dotsFunc = () => {
     for (let i = 0; i < step; i++) {
-      dots.push(<Dot fill={true} />);
+      dots.push(<Dot key={Math.random()} fill={true} />);
     }
     for (let i = dots.length; i < 3; i++) {
-      dots.push(<Dot fill={false} />);
+      dots.push(<Dot key={Math.random()} fill={false} />);
     }
   };
   if (dots.length < 3) {
@@ -57,7 +58,8 @@ export const SignLibrary = () => {
     };
     const res = await signLibraryCall(library);
     await UserCtx.logUser(res.admin);
-    router.push(`/books`);
+    createToken(res.token);
+    router.push("/");
   };
   return (
     <HomeWrapper>

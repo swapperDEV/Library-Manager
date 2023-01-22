@@ -1,28 +1,26 @@
 import { UserContext } from "../store/user-context";
 import { useContext } from "react";
+import { useRouter } from "next/router";
 
 export const PrivateRoute = ({
   children,
-  role,
   is,
 }: {
   children: JSX.Element;
-  role: string;
   is: boolean;
 }) => {
   const UserCtx = useContext(UserContext);
+  const router = useRouter();
+  if (UserCtx.userExist && !is) {
+    router.push("/");
+  }
+  if (is && !UserCtx.userExist) {
+    router.push("/");
+  }
   return (
     <>
-      {UserCtx.userExist && is && (
-        <>
-          {UserCtx.user.role && UserCtx.user.role === role ? (
-            <>{children}</>
-          ) : (
-            <>not have access</>
-          )}
-        </>
-      )}
-      {UserCtx.userExist === false && !is && <>{children}</>}
+      {is && UserCtx.userExist && <>{children}</>}
+      {!is && !UserCtx.userExist && <>{children}</>}
     </>
   );
 };

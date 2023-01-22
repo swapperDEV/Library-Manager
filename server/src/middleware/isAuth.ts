@@ -1,19 +1,31 @@
 import { Response, Request, NextFunction } from "express";
 import { ResponseError } from "../types/error";
+const jwt = require("jsonwebtoken");
 
 export const authChecker = (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
-  console.log(`Session Checker: ${req.session.id}`);
-  console.log(req.session, "_____test_____ ", req.session.user);
-  if (req.session.user) {
-    console.log(`Found User Session`);
-    next();
-  } else {
-    let error: ResponseError = new Error("Authentication failed.");
+  const authHeader = req.get("Authorization");
+  if (!authHeader) {
+    const error: ResponseError = new Error("Not authenticated.");
     error.statusCode = 401;
-    next(error);
+    throw error;
   }
+  const token = authHeader.split(" ")[1];
+  let decodedToken;
+  try {
+    decodedToken = jwt.verify(token, "swapperdev");
+  } catch (err: any) {
+    err.statusCode = 500;
+    throw err;
+  }
+  if (!decodedToken) {
+    const error: ResponseError = new Error("Not authenticated.");
+    error.statusCode = 401;
+    throw error;
+  }
+  req.userId = decodedToken.userId;
+  next();
 };

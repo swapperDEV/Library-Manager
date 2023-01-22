@@ -6,15 +6,10 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { UserProvider } from "../routes/UserProvider";
 import { apiIP } from "../utils/data/config";
-export default function App({ Component, pageProps, data }: AppProps) {
-  if (data && data.message !== "Authentication Failed") {
-    console.log("yes", data);
-  }
+export default function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider>
-      <UserProvider
-        data={data.message !== "Authentication Failed" && pageProps.user}
-      >
+      <UserProvider>
         <>
           <Component {...pageProps} />
           <ToastContainer
@@ -34,28 +29,3 @@ export default function App({ Component, pageProps, data }: AppProps) {
     </ThemeProvider>
   );
 }
-
-App.getInitialProps = async ({
-  Component,
-  ctx,
-}: {
-  Component: { getInitialProps: Function };
-  ctx: AppProps;
-}) => {
-  const res = await fetch(`${apiIP}/auth/checklogin`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  const data = await res.json();
-  console.log(data, res);
-  let pageProps = {};
-  if (Component.getInitialProps) {
-    pageProps = await Component.getInitialProps(ctx);
-  }
-  return {
-    pageProps,
-    data,
-  };
-};

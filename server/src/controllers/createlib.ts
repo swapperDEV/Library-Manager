@@ -5,6 +5,7 @@ import { validationResult } from "express-validator/check";
 import { deleteLibrary } from "../utils/deleteLibrary";
 import { Request, Response, NextFunction } from "express";
 import { ResponseError } from "../types/error";
+const jwt = require("jsonwebtoken");
 
 export const createLibrary = async (
   req: Request,
@@ -50,12 +51,20 @@ export const createLibrary = async (
           role: "admin",
         });
         await user.save();
-        req.session.user = user;
+        const token = jwt.sign(
+          {
+            name: adminName,
+            userId: user._id.toString(),
+          },
+          "swapperdev",
+          { expiresIn: "1h" }
+        );
         res.status(201).json({
           message: "Library & admin acc created successfully!",
           admin: user,
           library: library,
-          session: req.session,
+          token: token,
+          id: user._id.toString(),
         });
       } catch (err) {
         deleteLibrary(name);

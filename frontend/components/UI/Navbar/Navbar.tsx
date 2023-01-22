@@ -44,8 +44,12 @@ export const Navbar = () => {
       link: "/",
     },
     {
+      text: "About",
+      link: "/about",
+    },
+    {
       text: "Books",
-      link: "/books",
+      link: "/manager",
     },
     {
       text: "Logout",

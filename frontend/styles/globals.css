@@ -109,6 +109,7 @@ a {
 }
 
 #__next {
+  background-color: #161725;
   position: absolute;
   top: 0;
   bottom: 0;
