@@ -10,6 +10,25 @@
   font-weight: 300;
   font-size: 2rem;
   border-bottom: 2px solid var(--theme-page-background);
+  .userBadge {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 1.2rem;
+    background-color: var(--content-color);
+    padding: 5px;
+    border-radius: 5px;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-right: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    svg {
+      margin-right: 5px;
+      padding: 0px;
+      font-size: 2rem;
+    }
+  }
   .navBut {
     flex-grow: 1;
     display: flex;
