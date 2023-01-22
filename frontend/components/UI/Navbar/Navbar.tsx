@@ -1,20 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useRouter } from "next/router";
 import { FaBookOpen } from "react-icons/fa";
 import { FaLightbulb } from "react-icons/fa";
 import styles from "./navbar.module.scss";
 import { useTheme } from "next-themes";
+import { UserContext } from "../../../store/user-context";
 
 export const Navbar = () => {
   const router = useRouter();
   const { theme, setTheme } = useTheme();
+  const userCtx = useContext(UserContext);
 
   const toggle = () => {
     if (theme === "light") {
       setTheme("dark");
     } else [setTheme("light")];
   };
-  const navbar = [
+  const navbarLogout = [
     {
       text: "Home",
       link: "/",
@@ -36,6 +38,20 @@ export const Navbar = () => {
       link: "/sign",
     },
   ];
+  const navbarLogin = [
+    {
+      text: "Home",
+      link: "/",
+    },
+    {
+      text: "Books",
+      link: "/books",
+    },
+    {
+      text: "Logout",
+      link: "/logout",
+    },
+  ];
   return (
     <>
       <nav className={styles.nav}>
@@ -43,11 +59,23 @@ export const Navbar = () => {
           <a>Lib</a> Manager <FaBookOpen />
         </header>
         <ul>
-          {navbar.map((link) => (
-            <li key={link.text} onClick={() => router.push(`${link.link}`)}>
-              {link.text}
-            </li>
-          ))}
+          {userCtx.userExist ? (
+            <>
+              {navbarLogin.map((link) => (
+                <li key={link.text} onClick={() => router.push(`${link.link}`)}>
+                  {link.text}
+                </li>
+              ))}
+            </>
+          ) : (
+            <>
+              {navbarLogout.map((link) => (
+                <li key={link.text} onClick={() => router.push(`${link.link}`)}>
+                  {link.text}
+                </li>
+              ))}
+            </>
+          )}
         </ul>
         <div className={styles.navBut}>
           <FaLightbulb onClick={toggle} />

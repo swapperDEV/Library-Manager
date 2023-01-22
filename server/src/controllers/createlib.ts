@@ -50,10 +50,12 @@ export const createLibrary = async (
           role: "admin",
         });
         await user.save();
+        req.session.user = user;
         res.status(201).json({
           message: "Library & admin acc created successfully!",
           admin: user,
           library: library,
+          session: req.session,
         });
       } catch (err) {
         deleteLibrary(name);

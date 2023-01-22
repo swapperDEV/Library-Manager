@@ -15,5 +15,5 @@ router.post("/login/admin", login_1.loginAdmin);
 //POST /auth/logout
 router.post("/logout", isAuth_1.authChecker, login_1.logoutSession);
 //GET /auth/checklogin
-router.get("/checklogin", isAuth_1.authChecker, login_1.checkLogin);
+router.get("/checklogin", login_1.checkLogin);
 exports.default = router;

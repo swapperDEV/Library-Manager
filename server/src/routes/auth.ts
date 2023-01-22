@@ -24,6 +24,6 @@ router.post("/login/admin", loginAdmin);
 router.post("/logout", authChecker, logoutSession);
 
 //GET /auth/checklogin
-router.get("/checklogin", authChecker, checkLogin);
+router.get("/checklogin", checkLogin);
 
 export default router;

@@ -1,7 +1,6 @@
 import React, { useContext, useReducer, useState } from "react";
 import { UserContext } from "../../store/user-context";
 
-//comunicating with backend
 type UserData = {
   id?: number;
   name?: string;
@@ -41,14 +40,18 @@ const reducer = (
 };
 
 export const useUser = () => {
+  const [userExist, setUserExist] = useState(false);
   const [state, dispatch] = useReducer(reducer, initialState);
-  const logUser = (userData: {}) => {
+  const logUser = (userData: UserData) => {
+    console.log("logging", userData);
     dispatch({ type: actions.LOGIN_USER, userData });
+    setUserExist(true);
   };
-  const logoutUser = (userData: {}) => {
+  const logoutUser = (userData: UserData) => {
     dispatch({ type: actions.LOGOUT_USER, userData });
+    setUserExist(false);
   };
 
   const userCtx = useContext(UserContext);
-  return { state };
+  return { userExist, state, logUser, logoutUser };
 };

@@ -16,6 +16,7 @@ export const signLibraryCall = async (library: libraryType) => {
       const json = await res.json();
       if (json.message === "Library & admin acc created successfully!") {
         console.log(json);
+        return json;
       }
     }
   } catch (error) {

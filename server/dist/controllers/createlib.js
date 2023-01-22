@@ -59,10 +59,12 @@ const createLibrary = (req, res, next) => __awaiter(void 0, void 0, void 0, func
                     role: "admin",
                 });
                 yield user.save();
+                req.session.user = user;
                 res.status(201).json({
                     message: "Library & admin acc created successfully!",
                     admin: user,
                     library: library,
+                    session: req.session,
                 });
             }
             catch (err) {
