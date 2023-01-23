@@ -12,7 +12,7 @@ export const Welcome = () => {
           <div className={styles.circleRed}></div>
           <div className={styles.circleYellow}></div>
         </div>
-        <div className={styles.second}>Us modern</div>
+        <div className={styles.second}>Our modern</div>
         <div className={styles.last}>
           <div className={styles.circleHalfO}></div>
           <div className={styles.circleHalfT}></div>
