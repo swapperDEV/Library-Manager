@@ -9,7 +9,6 @@ import { MapStep } from "./Steps/MapStep";
 import { FadeAnimationWrapper } from "../Templates/FadeAnimationWrapper";
 import { toast } from "react-toastify";
 import { signLibraryCall } from "../../utils/functions/signLibrary";
-import { useUser } from "../../utils/hooks/useUser";
 import { UserContext } from "../../store/user-context";
 import { createToken } from "../../utils/functions/createToken";
 
@@ -66,7 +65,7 @@ export const SignLibrary = () => {
       <section className={styles.wrapper}>
         <div className={styles.description}>
           <p>Sign your library.</p>
-          <p className={styles.info}>To use us managment system.</p>
+          <p className={styles.info}>To use our managment system.</p>
         </div>
         {step === 1 && (
           <FadeAnimationWrapper>
