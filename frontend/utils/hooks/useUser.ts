@@ -1,4 +1,5 @@
 import React, { useContext, useReducer, useState } from "react";
+import { LibraryContext } from "../../store/library-context";
 import { UserContext } from "../../store/user-context";
 
 type UserData = {
@@ -53,5 +54,6 @@ export const useUser = () => {
   };
 
   const userCtx = useContext(UserContext);
+  const libraryCtx = useContext(LibraryContext);
   return { userExist, state, logUser, logoutUser };
 };

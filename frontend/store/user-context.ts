@@ -1,6 +1,6 @@
 import { createContext } from "react";
 type UserData = {
-  user: { id?: number; name?: string; role?: string };
+  user: { id?: number; name?: string; role?: string; library?: string };
   userExist: boolean;
   logoutUser: Function;
   logUser: Function;

@@ -8,6 +8,7 @@ export const authChecker = (
   next: NextFunction
 ) => {
   const authHeader = req.get("Authorization");
+  console.log(authHeader, "sprawdzam");
   if (!authHeader) {
     const error: ResponseError = new Error("Not authenticated.");
     error.statusCode = 401;

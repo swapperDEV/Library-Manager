@@ -9,6 +9,7 @@ const mongoose_1 = __importDefault(require("mongoose"));
 //routes
 const createlib_1 = __importDefault(require("./routes/createlib"));
 const auth_1 = __importDefault(require("./routes/auth"));
+const library_1 = __importDefault(require("./routes/library"));
 const app = (0, express_1.default)();
 app.use(body_parser_1.default.json());
 //CORS
@@ -20,6 +21,7 @@ app.use((req, res, next) => {
 });
 app.use("/createlib", createlib_1.default);
 app.use("/auth", auth_1.default);
+app.use("/library", library_1.default);
 //error handling
 app.use(((error, req, res, next) => {
     console.log(error);

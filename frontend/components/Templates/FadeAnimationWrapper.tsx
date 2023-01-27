@@ -1,6 +1,6 @@
 import { AnimatePresence } from "framer-motion";
 import React from "react";
-import { MotionProvider } from "../Providers/MotionProvider";
+import { MotionProvider } from "../../routes/MotionProvider";
 export const FadeAnimationWrapper = ({
   children,
 }: {

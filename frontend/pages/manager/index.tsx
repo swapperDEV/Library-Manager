@@ -1,7 +1,13 @@
 import Head from "next/head";
+import { QueryClient } from "react-query";
+import { QueryClientProvider } from "react-query";
+import { Dashboard } from "../../components/Manager/Manager";
+import { LibraryProvider } from "../../routes/LibraryProvider";
 import { PrivateRoute } from "../../routes/PrivateRoute";
 
 export default function Index() {
+  const queryClient = new QueryClient();
+
   return (
     <>
       <Head>
@@ -11,7 +17,11 @@ export default function Index() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <PrivateRoute is={true}>
-        <h1>Manager access</h1>
+        <QueryClientProvider client={queryClient}>
+          <LibraryProvider>
+            <Dashboard />
+          </LibraryProvider>
+        </QueryClientProvider>
       </PrivateRoute>
     </>
   );

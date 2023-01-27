@@ -3,7 +3,7 @@ import { Footer } from "../UI/Footer/Footer";
 import { Navbar } from "../UI/Navbar/Navbar";
 import { AnimatePresence } from "framer-motion";
 import styles from "./styles/homewrapper.module.scss";
-import { MotionProvider } from "../Providers/MotionProvider";
+import { MotionProvider } from "../../routes/MotionProvider";
 
 export const HomeWrapper = ({ children }: { children: JSX.Element }) => {
   return (

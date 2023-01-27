@@ -1,0 +1,15 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  padding-right: 25px;
+  border-right: 1px solid var(--theme-page-background);
+  a {
+    color: var(--content-color);
+    margin-right: 2px;
+  }
+  svg {
+    margin-left: 10px;
+  }
+}

@@ -1,21 +1,15 @@
 import React, { useContext } from "react";
 import { useRouter } from "next/router";
-import { FaBookOpen, FaUser } from "react-icons/fa";
-import { FaLightbulb } from "react-icons/fa";
+import { FaBookOpen } from "react-icons/fa";
 import styles from "./navbar.module.scss";
-import { useTheme } from "next-themes";
+import { LightSwitch } from "./Elements/LightSwitch";
 import { UserContext } from "../../../store/user-context";
+import { PageLogo } from "./Elements/PageLogo";
 
 export const Navbar = () => {
   const router = useRouter();
-  const { theme, setTheme } = useTheme();
   const userCtx = useContext(UserContext);
 
-  const toggle = () => {
-    if (theme === "light") {
-      setTheme("dark");
-    } else [setTheme("light")];
-  };
   const navbarLogout = [
     {
       text: "Home",
@@ -59,9 +53,7 @@ export const Navbar = () => {
   return (
     <>
       <nav className={styles.nav}>
-        <header>
-          <a>Lib</a> Manager <FaBookOpen />
-        </header>
+        <PageLogo />
         <ul>
           {userCtx.userExist ? (
             <>
@@ -81,15 +73,7 @@ export const Navbar = () => {
             </>
           )}
         </ul>
-        <div className={styles.navBut}>
-          {userCtx.userExist && (
-            <div className={styles.userBadge}>
-              <FaUser />
-              {userCtx.user.name}
-            </div>
-          )}
-          <FaLightbulb onClick={toggle} />
-        </div>
+        <LightSwitch />
       </nav>
     </>
   );

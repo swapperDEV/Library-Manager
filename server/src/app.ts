@@ -6,6 +6,7 @@ import mongoose from "mongoose";
 //routes
 import createLibraryRoute from "./routes/createlib";
 import authRoutes from "./routes/auth";
+import libraryRoutes from "./routes/library";
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use((req, res, next) => {
 
 app.use("/createlib", createLibraryRoute);
 app.use("/auth", authRoutes);
+app.use("/library", libraryRoutes);
 
 //error handling
 app.use(((error, req, res, next) => {

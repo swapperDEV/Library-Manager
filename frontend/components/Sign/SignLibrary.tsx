@@ -58,7 +58,7 @@ export const SignLibrary = () => {
     const res = await signLibraryCall(library);
     await UserCtx.logUser(res.admin);
     createToken(res.token);
-    router.push("/");
+    router.push("/manager");
   };
   return (
     <HomeWrapper>
