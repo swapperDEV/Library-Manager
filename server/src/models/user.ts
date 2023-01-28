@@ -22,7 +22,7 @@ const userSchema: Schema = new Schema({
   },
   name: {
     type: String,
-    required: true,
+    required: false,
   },
   cardId: {
     type: String,
@@ -42,6 +42,7 @@ const userSchema: Schema = new Schema({
       ref: "Book",
     },
   ],
+  required: false,
 });
 
 export default mongoose.model<IUser>("User", userSchema);

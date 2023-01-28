@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { LibraryContext } from "../store/library-context";
 import { useQuery } from "react-query";
 import { libraryType } from "../types/library";
 import { UserContext } from "../store/user-context";
 import { getLibraryData } from "../utils/functions/getLibraryData";
+import { getLibraryMembers } from "../utils/functions/getLibraryMembers";
 
 export const defaultLibraryValue = {
   name: "",
@@ -17,13 +18,16 @@ export const defaultLibraryValue = {
 
 export const LibraryProvider = ({ children }: { children: JSX.Element }) => {
   const userCtx = useContext(UserContext);
+  const [libraryMembers, setLibraryMembers] = useState<[]>([]);
   const { isLoading, error, data, isFetching } = useQuery<libraryType>(
     "library",
     () => getLibraryData(userCtx.user.library)
   );
   return (
     <LibraryContext.Provider
-      value={{ library: data === undefined ? defaultLibraryValue : data }}
+      value={{
+        library: data === undefined ? defaultLibraryValue : data,
+      }}
     >
       {isLoading ? (
         <>Loading...</>

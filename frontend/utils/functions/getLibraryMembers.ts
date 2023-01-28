@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { UserContext } from "../../store/user-context";
 import { apiIP } from "../data/config";
-import { getLibraryMembers } from "./getLibraryMembers";
 
-export const getLibraryData = async (library: string | undefined) => {
+export const getLibraryMembers = async (library: string | undefined) => {
+  console.log("gettings members");
   const token = localStorage.getItem("token");
   const expiryDate = localStorage.getItem("expiryDate");
   if (!token || !expiryDate) {
@@ -13,7 +13,7 @@ export const getLibraryData = async (library: string | undefined) => {
     return false;
   }
   if (library !== undefined) {
-    const res = await fetch(`http://127.0.0.1:8080/library`, {
+    const res = await fetch(`http://127.0.0.1:8080/library/members`, {
       method: "POST",
       headers: {
         Authorization: "Bearer " + token,
@@ -23,9 +23,7 @@ export const getLibraryData = async (library: string | undefined) => {
         name: library,
       }),
     });
-    const members = await getLibraryMembers(library);
-    const data = await res.json();
-    return { ...data, members };
+    return res.json();
   } else {
     return {};
   }

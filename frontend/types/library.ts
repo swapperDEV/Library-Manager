@@ -6,4 +6,5 @@ export type libraryType = {
   adminName: string;
   adminPassword: string;
   adminEmail: string;
+  members?: [];
 };

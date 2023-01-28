@@ -12,8 +12,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getLibraryData = void 0;
+exports.createLibraryAdmin = exports.createLibraryUser = exports.getLibraryMembers = exports.getLibraryData = void 0;
 const library_1 = __importDefault(require("../models/library"));
+const user_1 = __importDefault(require("../models/user"));
 const getLibraryData = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const libraryName = req.body.name;
     try {
@@ -33,3 +34,28 @@ const getLibraryData = (req, res, next) => __awaiter(void 0, void 0, void 0, fun
     }
 });
 exports.getLibraryData = getLibraryData;
+const getLibraryMembers = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const libraryName = req.body.name;
+    try {
+        const members = yield user_1.default.find({ library: libraryName })
+            .where("role")
+            .equals("member");
+        if (!members || members.length == 0) {
+            res.status(200).json({ message: "Cannot find users" });
+        }
+        else {
+            res.status(200).json(members);
+        }
+    }
+    catch (err) {
+        if (!err.statusCode) {
+            err.statusCode = 500;
+        }
+        next(err);
+    }
+});
+exports.getLibraryMembers = getLibraryMembers;
+const createLibraryUser = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () { });
+exports.createLibraryUser = createLibraryUser;
+const createLibraryAdmin = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () { });
+exports.createLibraryAdmin = createLibraryAdmin;

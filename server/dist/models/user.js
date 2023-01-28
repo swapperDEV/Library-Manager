@@ -35,7 +35,7 @@ const userSchema = new mongoose_1.Schema({
     },
     name: {
         type: String,
-        required: true,
+        required: false,
     },
     cardId: {
         type: String,
@@ -55,5 +55,6 @@ const userSchema = new mongoose_1.Schema({
             ref: "Book",
         },
     ],
+    required: false,
 });
 exports.default = mongoose_1.default.model("User", userSchema);
