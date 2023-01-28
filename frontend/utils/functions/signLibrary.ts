@@ -1,7 +1,7 @@
-import { libraryType } from "../../types/library";
+import { librarySignupType } from "../../types/library";
 import { apiIP } from "../data/config";
 
-export const signLibraryCall = async (library: libraryType) => {
+export const signLibraryCall = async (library: librarySignupType) => {
   try {
     const res = await fetch(`${apiIP}/createlib/new`, {
       method: "POST",

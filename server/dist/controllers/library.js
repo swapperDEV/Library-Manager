@@ -41,7 +41,7 @@ const getLibraryMembers = (req, res, next) => __awaiter(void 0, void 0, void 0, 
             .where("role")
             .equals("member");
         if (!members || members.length == 0) {
-            res.status(200).json({ message: "Cannot find users" });
+            res.status(200).json([]);
         }
         else {
             res.status(200).json(members);

@@ -1,4 +1,4 @@
-export type libraryType = {
+export type librarySignupType = {
   name: string;
   address: string;
   phone: string;
@@ -7,4 +7,12 @@ export type libraryType = {
   adminPassword: string;
   adminEmail: string;
   members?: [];
+};
+
+export type libraryType = {
+  name: string;
+  address: string;
+  phone: string;
+  coords: [number, number];
+  members: [];
 };

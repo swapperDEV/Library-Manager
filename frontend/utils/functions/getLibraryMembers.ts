@@ -3,7 +3,6 @@ import { UserContext } from "../../store/user-context";
 import { apiIP } from "../data/config";
 
 export const getLibraryMembers = async (library: string | undefined) => {
-  console.log("gettings members");
   const token = localStorage.getItem("token");
   const expiryDate = localStorage.getItem("expiryDate");
   if (!token || !expiryDate) {
