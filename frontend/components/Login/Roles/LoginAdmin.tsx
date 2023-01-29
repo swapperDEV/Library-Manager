@@ -25,7 +25,9 @@ export const LoginAdmin = () => {
       if (res.user) {
         await userCtx.logUser(res.user);
         createToken(res.token);
-        router.push("/");
+        setTimeout(() => {
+          router.push("/manager");
+        }, 1000);
       }
     }
   };

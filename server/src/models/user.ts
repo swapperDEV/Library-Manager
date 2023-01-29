@@ -36,6 +36,13 @@ const userSchema: Schema = new Schema({
     type: String,
     required: true,
   },
+  memberInfo: {
+    type: {
+      address: String,
+      pesel: String,
+    },
+    required: false,
+  },
   rentedBooks: [
     {
       type: Schema.Types.ObjectId,

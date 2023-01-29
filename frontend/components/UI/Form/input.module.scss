@@ -4,6 +4,14 @@
   padding: 10px;
   margin-bottom: 20px;
   border-radius: 10px;
+  .top {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    svg {
+      margin-left: 5px;
+    }
+  }
   p {
     padding-bottom: 2px;
   }
@@ -27,4 +35,17 @@
     font-size: 1.3rem;
     width: 100%;
   }
+}
+
+.eye {
+  color: white;
+}
+.eye:hover {
+  cursor: pointer;
+}
+.activeEye {
+  color: var(--content-color);
+}
+.activeEye:hover {
+  cursor: pointer;
 }

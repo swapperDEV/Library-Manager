@@ -13,6 +13,7 @@ export const ManagerNavbar = ({
   content: string;
   setContent: Function;
 }) => {
+  const router = useRouter();
   return (
     <div className={styles.navbar}>
       <nav>
@@ -32,12 +33,6 @@ export const ManagerNavbar = ({
               <FaTable /> Dashboard
             </li>
             <li
-              onClick={() => setContent("loan")}
-              className={content === "loan" ? styles.active : styles.none}
-            >
-              <FaQuoteLeft /> Loan Book
-            </li>
-            <li
               onClick={() => setContent("books")}
               className={content === "books" ? styles.active : styles.none}
             >
@@ -50,6 +45,9 @@ export const ManagerNavbar = ({
             >
               <FaUsers />
               Members
+            </li>
+            <li onClick={() => router.push("/logout")}>
+              <FaQuoteLeft /> Logout
             </li>
           </ul>
         </div>

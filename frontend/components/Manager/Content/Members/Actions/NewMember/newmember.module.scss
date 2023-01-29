@@ -1,0 +1,12 @@
+.form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 450px;
+  position: relative;
+  padding-top: 50px;
+  padding-left: 50px;
+  .title {
+    margin-bottom: 20px;
+  }
+}

@@ -1,4 +1,5 @@
-import React, { forwardRef } from "react";
+import React, { useState } from "react";
+import { FaEye } from "react-icons/fa";
 import styles from "./input.module.scss";
 
 interface Props {
@@ -8,15 +9,35 @@ interface Props {
 }
 
 export const Input = React.forwardRef<HTMLInputElement, Props>((props, ref) => {
+  const [showPassword, passwordShowChange] = useState(false);
+
   return (
     <div className={styles.wrapper}>
-      <p>{props.name}</p>
+      <div className={styles.top}>
+        <p>{props.name}</p>
+        {props.type === "password" && (
+          <div
+            className={showPassword ? styles.activeEye : styles.eye}
+            onClick={() => passwordShowChange(!showPassword)}
+          >
+            <FaEye />
+          </div>
+        )}
+      </div>
       <div className={styles.cont}>
         {props.icon && <>{props.icon}</>}
         <input
           maxLength={35}
           ref={ref}
-          type={props.type ? props.type : "text"}
+          type={
+            props.type
+              ? props.type === "password"
+                ? showPassword
+                  ? "text"
+                  : "password"
+                : props.type
+              : "text"
+          }
         />
       </div>
     </div>
