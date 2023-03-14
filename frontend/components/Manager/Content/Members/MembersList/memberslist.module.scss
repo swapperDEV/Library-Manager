@@ -1,0 +1,8 @@
+.wrapper {
+  margin-top: 20px;
+  margin-left: 10px;
+  height: calc(100vh - 200px);
+  overflow-y: auto;
+  scrollbar-color: var(--content-color) var(--theme-page-background);
+  scrollbar-width: thin;
+}

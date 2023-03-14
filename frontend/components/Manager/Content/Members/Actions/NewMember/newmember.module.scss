@@ -8,5 +8,16 @@
   padding-left: 50px;
   .title {
     margin-bottom: 20px;
+    font-size: 1.5rem;
+  }
+}
+.buttons {
+  display: flex;
+  flex-direction: row;
+  :first-child {
+    margin-right: 10px;
+  }
+  :last-child {
+    margin-left: 10px;
   }
 }

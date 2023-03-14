@@ -40,6 +40,7 @@ const userSchema: Schema = new Schema({
     type: {
       address: String,
       pesel: String,
+      phone: String,
     },
     required: false,
   },

@@ -20,7 +20,7 @@ export const Members = () => {
           <MembersList />
         </div>
       )}
-      {action === "new" && <NewMember />}
+      {action === "new" && <NewMember setAction={setAction} />}
     </div>
   );
 };

@@ -49,6 +49,14 @@ const userSchema = new mongoose_1.Schema({
         type: String,
         required: true,
     },
+    memberInfo: {
+        type: {
+            address: String,
+            pesel: String,
+            phone: String,
+        },
+        required: false,
+    },
     rentedBooks: [
         {
             type: mongoose_1.Schema.Types.ObjectId,

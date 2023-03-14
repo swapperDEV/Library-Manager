@@ -20,3 +20,16 @@ export const isPhone = (str: string) => {
     return false;
   }
 };
+
+export const isPesel = (str: string) => {
+  const peselRegex = "^^[0-9]+$";
+  if (str.match(peselRegex)) {
+    if (str.length == 11) {
+      return true;
+    } else {
+      return false;
+    }
+  } else {
+    return false;
+  }
+};

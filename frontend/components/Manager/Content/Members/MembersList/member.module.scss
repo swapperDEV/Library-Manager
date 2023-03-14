@@ -1,0 +1,27 @@
+.member {
+  padding: 10px;
+  margin-bottom: 15px;
+  list-style-type: none;
+  margin-right: 10px;
+  border-radius: 5px;
+  background-color: var(--theme-page-background);
+  color: var(--theme-page-text-two);
+  display: flex;
+  font-size: 1.5rem;
+  justify-content: flex-start;
+  align-items: center;
+  svg {
+    margin-right: 5px;
+  }
+}
+.member:last-child {
+  margin-bottom: 0px;
+}
+.member:first-child {
+  margin-top: 5px;
+}
+.member:hover {
+  cursor: pointer;
+  color: var(--theme-page-text);
+  background-color: var(--content-color);
+}

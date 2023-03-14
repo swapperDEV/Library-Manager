@@ -16,7 +16,15 @@ router.post("/", [body("name")], authChecker, getLibraryData);
 //POST /library/newmember
 router.post(
   "/newmember",
-  [body("email"), body("cardId"), body("password"), body("library")],
+  [
+    body("name"),
+    body("email"),
+    body("password"),
+    body("pesel"),
+    body("library"),
+    body("phone"),
+    body("address"),
+  ],
   createLibraryUser
 );
 
