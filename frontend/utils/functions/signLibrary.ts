@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { librarySignupType } from "../../types/library";
 import { apiIP } from "../data/config";
 
@@ -10,16 +11,21 @@ export const signLibraryCall = async (library: librarySignupType) => {
       },
       body: JSON.stringify(library),
     });
-    if (!res.ok) {
-      throw new Error(`Http error: ${res.status}`);
+    if (res.ok) {
+      const json = await res.json();
+      if (json.library) {
+        return json;
+      } else {
+        toast("Error");
+        return false;
+      }
     } else {
       const json = await res.json();
-      if (json.message === "Library & admin acc created successfully!") {
-        console.log(json);
-        return json;
-      }
+      toast(json.message);
+      return false;
     }
-  } catch (error) {
-    console.log(error);
+  } catch (error: any) {
+    toast("Error");
+    return false;
   }
 };

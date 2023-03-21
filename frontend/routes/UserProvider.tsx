@@ -13,7 +13,6 @@ export const UserProvider = ({ children }: { children: JSX.Element }) => {
     const auth = await checkAuth();
     if (auth !== false) {
       logUser(auth.user);
-      console.log(auth);
       if (auth.user === null) {
         logoutUser({});
       }

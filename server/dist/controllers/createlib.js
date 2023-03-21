@@ -36,6 +36,7 @@ const createLibrary = (req, res, next) => __awaiter(void 0, void 0, void 0, func
     const adminExists = yield user_1.default.findOne({ name: adminName });
     if (adminExists) {
         let error = new Error("Admin exists, bad name");
+        error.message = "Admin with this login exists";
         error.statusCode = 409;
         next(error);
     }
@@ -76,11 +77,13 @@ const createLibrary = (req, res, next) => __awaiter(void 0, void 0, void 0, func
                 (0, deleteLibrary_1.deleteLibrary)(name);
                 let error = new Error("Error during signup");
                 error.statusCode = 500;
+                error.message = "Error during signup";
                 next(error);
             }
         }
         else {
             let error = new Error("Library exists");
+            error.message = "Library with this name exists";
             error.statusCode = 409;
             next(error);
         }

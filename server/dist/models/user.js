@@ -31,7 +31,7 @@ const userSchema = new mongoose_1.Schema({
     },
     password: {
         type: String,
-        required: true,
+        required: false,
     },
     name: {
         type: String,
@@ -48,6 +48,10 @@ const userSchema = new mongoose_1.Schema({
     role: {
         type: String,
         required: true,
+    },
+    status: {
+        type: String,
+        required: false,
     },
     memberInfo: {
         type: {

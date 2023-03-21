@@ -28,6 +28,7 @@ export const createLibrary = async (
   const adminExists = await User.findOne({ name: adminName });
   if (adminExists) {
     let error: ResponseError = new Error("Admin exists, bad name");
+    error.message = "Admin with this login exists"
     error.statusCode = 409;
     next(error);
   } else {
@@ -70,10 +71,12 @@ export const createLibrary = async (
         deleteLibrary(name);
         let error: ResponseError = new Error("Error during signup");
         error.statusCode = 500;
+        error.message = "Error during signup"
         next(error);
       }
     } else {
       let error: ResponseError = new Error("Library exists");
+      error.message = "Library with this name exists"
       error.statusCode = 409;
       next(error);
     }

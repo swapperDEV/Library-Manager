@@ -18,7 +18,7 @@ const userSchema: Schema = new Schema({
   },
   password: {
     type: String,
-    required: true,
+    required: false,
   },
   name: {
     type: String,
@@ -35,6 +35,10 @@ const userSchema: Schema = new Schema({
   role: {
     type: String,
     required: true,
+  },
+  status: {
+    type: String,
+    required: false,
   },
   memberInfo: {
     type: {

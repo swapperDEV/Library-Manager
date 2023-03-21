@@ -15,4 +15,6 @@ export type libraryType = {
   phone: string;
   coords: [number, number];
   members: [];
+  reload?: Function;
+  checkUserAuth?: Function;
 };

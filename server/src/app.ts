@@ -7,10 +7,20 @@ import mongoose from "mongoose";
 import createLibraryRoute from "./routes/createlib";
 import authRoutes from "./routes/auth";
 import libraryRoutes from "./routes/library";
-
+import { emailAuth } from "./settings";
 const app = express();
 
 app.use(bodyParser.json());
+
+//nodemailer
+const nodemailer = require("nodemailer");
+export const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: emailAuth.email,
+    pass: emailAuth.password,
+  },
+});
 
 //CORS
 app.use((req, res, next) => {
@@ -38,7 +48,7 @@ app.use(((error, req, res, next) => {
 
 //mongo db
 mongoose
-  .connect("mongodb://localhost:27017")
+  .connect("mongodb://127.0.0.1:27017")
   .then((result) => {
     app.listen(8080);
   })

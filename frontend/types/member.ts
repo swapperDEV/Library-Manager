@@ -3,7 +3,6 @@ export interface MemberSignup {
   email: string;
   phone: string;
   address: string;
-  password: string;
   pesel: string;
   library: string;
 }

@@ -16,7 +16,8 @@ exports.createLibraryAdmin = exports.createLibraryUser = exports.getLibraryMembe
 const library_1 = __importDefault(require("../models/library"));
 const user_1 = __importDefault(require("../models/user"));
 const check_1 = require("express-validator/check");
-const bcryptjs_1 = __importDefault(require("bcryptjs"));
+const createCardId_1 = require("../helpers/createCardId");
+const sendMailForPassword_1 = require("../helpers/sendMailForPassword");
 const getLibraryData = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const libraryName = req.body.name;
     try {
@@ -66,7 +67,6 @@ const createLibraryUser = (req, res, next) => __awaiter(void 0, void 0, void 0, 
     }
     const name = req.body.name;
     const email = req.body.email;
-    const password = req.body.password;
     const pesel = req.body.pesel;
     const phone = req.body.phone;
     const address = req.body.address;
@@ -94,22 +94,26 @@ const createLibraryUser = (req, res, next) => __awaiter(void 0, void 0, void 0, 
             }
             else {
                 try {
-                    const hashedPw = yield bcryptjs_1.default.hash(password, 12);
+                    console.log("sprawdzanie");
+                    const card = yield (0, createCardId_1.createCardId)(library, name);
                     const user = new user_1.default({
                         name,
                         email,
-                        password: hashedPw,
                         memberInfo: { address, pesel, phone },
                         library,
                         role: "member",
                         rentedBooks: [],
+                        cardId: card,
+                        status: "Not confirmed",
                     });
+                    console.log(user);
                     yield user.save();
                     res.status(201).json({
                         message: "Created user!",
                         user,
                     });
                     console.log("user was created");
+                    (0, sendMailForPassword_1.sendMailForPassword)(email);
                 }
                 catch (err) {
                     let error = new Error("Error during signup");

@@ -12,16 +12,16 @@ export const createMember = async (member: MemberSignup) => {
       body: JSON.stringify(member),
     });
     const json = await res.json();
-    console.log(json);
-    console.log(json);
     if (json.message === "Created user!") {
       console.log(json);
       toast("User was created");
+      return json.message;
     } else {
       toast(json.message);
+      return false;
     }
-    return json.message;
   } catch (error) {
     console.log(error);
+    return false;
   }
 };

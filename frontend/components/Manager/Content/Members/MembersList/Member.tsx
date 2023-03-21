@@ -5,6 +5,9 @@ export const Member = ({ member }: any) => {
     <li className={styles.member}>
       <FaUser />
       {member.name} | {member.email}
+      <div className={styles.status}>
+        <p>{member.status && member.status}</p>
+      </div>
     </li>
   );
 };

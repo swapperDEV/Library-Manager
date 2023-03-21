@@ -4,6 +4,8 @@ import User from "../models/user";
 import { CatchError, ResponseError } from "../types/error";
 import { validationResult } from "express-validator/check";
 import bcrypt from "bcryptjs";
+import { createCardId } from "../helpers/createCardId";
+import { sendMailForPassword } from "../helpers/sendMailForPassword";
 
 export const getLibraryData = async (
   req: Request,
@@ -65,7 +67,6 @@ export const createLibraryUser = async (
   }
   const name = req.body.name;
   const email = req.body.email;
-  const password = req.body.password;
   const pesel = req.body.pesel;
   const phone = req.body.phone;
   const address = req.body.address;
@@ -96,22 +97,26 @@ export const createLibraryUser = async (
         next(error);
       } else {
         try {
-          const hashedPw = await bcrypt.hash(password, 12);
+          console.log("sprawdzanie");
+          const card = await createCardId(library, name);
           const user = new User({
             name,
             email,
-            password: hashedPw,
             memberInfo: { address, pesel, phone },
             library,
             role: "member",
             rentedBooks: [],
+            cardId: card,
+            status: "Not confirmed",
           });
+          console.log(user);
           await user.save();
           res.status(201).json({
             message: "Created user!",
             user,
           });
           console.log("user was created");
+          sendMailForPassword(email);
         } catch (err) {
           let error: ResponseError = new Error("Error during signup");
           error.statusCode = 500;

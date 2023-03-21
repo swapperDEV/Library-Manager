@@ -10,8 +10,8 @@ export const LibraryContext = createContext<LibraryData>({
     address: "",
     phone: "",
     coords: [0, 0],
-    adminName: "",
-    adminPassword: "",
-    adminEmail: "",
+    members: [],
+    reload: () => {},
+    checkUserAuth: () => {},
   },
 });

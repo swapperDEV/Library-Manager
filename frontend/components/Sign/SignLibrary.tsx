@@ -56,10 +56,13 @@ export const SignLibrary = () => {
       adminEmail: adminEmail,
     };
     const res = await signLibraryCall(library);
-    await UserCtx.logUser(res.admin);
-    createToken(res.token);
-    router.push("/manager");
-  };
+    if(res) {
+      await UserCtx.logUser(res.admin);
+      createToken(res.token);
+      setTimeout(() => {
+        router.push("/manager");
+      }, 1000);  };
+    }
   return (
     <HomeWrapper>
       <section className={styles.wrapper}>

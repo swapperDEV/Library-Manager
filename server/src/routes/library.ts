@@ -19,7 +19,6 @@ router.post(
   [
     body("name"),
     body("email"),
-    body("password"),
     body("pesel"),
     body("library"),
     body("phone"),
